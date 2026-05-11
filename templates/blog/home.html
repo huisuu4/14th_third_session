@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ BRAND_NAME }}{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+{# TODO: W1 — 아기 사자 작성 영역 #}
+
+
+<main class="home-page">
+
+    <section class="home-hero">
+        <div class="hero-inner">
+            <p class="hero-eyebrow">
+                {{ hero.eyebrow_left }}
+                <span>{{ hero.eyebrow_right }}</span>
+            </p>
+
+            <h1 class="hero-title">
+                {{ hero.h1_line1 }}<br>
+                {{ hero.h1_line2 }}<span>.</span>
+            </h1>
+
+            <p class="hero-bio">
+                {{ hero.bio_line1 }}<br>
+                {{ hero.bio_line2 }}
+            </p>
+
+            <div class="hero-actions">
+                <a href="{% url 'tech_list' %}" class="home-button primary">최신 글 읽기 →</a>
+                <a href="{% url 'profile' %}" class="home-button">about</a>
+            </div>
+
+            <p class="now-writing">
+                <span>now writing</span>
+                {{ hero.now_writing }}
+            </p>
+        </div>
+    </section>
+
+    <section class="note-section">
+        <div class="note-inner">
+
+            <div class="note-header">
+                <h2 class="note-title">오늘의 노트</h2>
+                <a href="{% url 'tech_list' %}" class="see-all">see all →</a>
+            </div>
+
+            <div class="note-layout">
+
+                <a href="{% url 'tech_detail' featured.slug %}" class="featured-card">
+                    <div class="featured-cover">
+                        {{ featured.title }} · cover
+                    </div>
+
+                    <div class="featured-content">
+                        <div class="post-meta">
+                            <span class="chip accent">{{ featured.category.label }}</span>
+
+                            {% if featured.series_label %}
+                            <span class="chip outline">{{ featured.series_label }}</span>
+                            {% endif %}
+
+                            <span>{{ featured.date_display }}</span>
+                            <span>·</span>
+                            <span>{{ featured.read_minutes }} min</span>
+                        </div>
+
+                        <h3>{{ featured.title }}</h3>
+                        <p>
+                            토큰을 짓는 일은 결국 이름을 짓는 일이다. 작은 결정에 이름을 붙이는 일 — 그게 시스템이다.
+                        </p>
+                        <span class="featured-read">이어 읽기 →</span>
+                    </div>
+                </a>
+
+                <aside class="latest-card">
+                    <p class="latest-heading">LATEST · 최근 5편</p>
+
+                    <a href="{% url 'tech_detail' featured.slug %}" class="latest-item">
+                        <div class="latest-meta">
+                            <span class="chip accent">TypeScript</span>
+                            <span>04.21</span>
+                        </div>
+                        <strong>tRPC와 함께한 1년: 좋았던 것, 불편했던 것</strong>
+                    </a>
+
+                    <a href="{% url 'tech_detail' featured.slug %}" class="latest-item">
+                        <div class="latest-meta">
+                            <span class="chip accent">Frontend</span>
+                            <span>04.14</span>
+                        </div>
+                        <strong>CSS Container Queries, 결국 쓰게 되더라</strong>
+                    </a>
+
+                    <a href="{% url 'tech_detail' featured.slug %}" class="latest-item">
+                        <div class="latest-meta">
+                            <span class="chip accent">AI</span>
+                            <span>04.07</span>
+                        </div>
+                        <strong>Vibe coding 다음 단계 — 워크플로우 만들기</strong>
+                    </a>
+
+                    <a href="{% url 'tech_detail' featured.slug %}" class="latest-item">
+                        <div class="latest-meta">
+                            <span class="chip accent">Performance</span>
+                            <span>03.30</span>
+                        </div>
+                        <strong>React 19 컴파일러로 useMemo를 지웠다</strong>
+                    </a>
+
+                    <a href="{% url 'tech_detail' featured.slug %}" class="latest-item">
+                        <div class="latest-meta">
+                            <span class="chip accent">Series · DS</span>
+                            <span>03.22</span>
+                        </div>
+                        <strong>디자인 토큰을 코드로 옮기는 5가지 방법</strong>
+                    </a>
+                </aside>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+{% endblock %}

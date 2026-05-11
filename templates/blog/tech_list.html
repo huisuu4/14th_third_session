@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tech · {{ BRAND_NAME }}{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/tech_list.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="tech-list-page">
+
+    <section class="tech-list-main">
+
+        <div class="tech-list-header">
+
+            <div class="tech-title-area">
+                <p class="page-eyebrow">TECH NOTES</p>
+
+                <h1 class="page-title">만들면서 배운 것들.</h1>
+
+                <div class="category-row">
+                    <span class="chip accent">All</span>
+                    <span class="chip outline">Frontend</span>
+                    <span class="chip outline">TypeScript</span>
+                    <span class="chip outline">AI</span>
+                    <span class="chip outline">Performance</span>
+                    <span class="chip outline">Series · DS</span>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <span class="search-icon">⌕</span>
+                <span class="search-placeholder">search posts...</span>
+                <span class="search-key">⌘K</span>
+            </div>
+
+        </div>
+
+        <section class="post-list">
+
+            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
+                <time class="post-date">2026.04.28</time>
+
+                <div class="post-content">
+                    <h2>손에 익는 디자인 시스템 만들기</h2>
+                    <p>Designing a system that fits the hand</p>
+
+                    <div class="post-tags">
+                        <span class="chip accent">Frontend</span>
+                        <span class="chip outline">#design-system</span>
+                        <span class="chip outline">#tokens</span>
+                        <span class="chip outline">#css</span>
+                    </div>
+                </div>
+
+                <span class="read-time">8 min</span>
+            </a>
+
+            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
+                <time class="post-date">2026.04.21</time>
+
+                <div class="post-content">
+                    <h2>tRPC와 함께한 1년: 좋았던 것, 불편했던 것</h2>
+                    <p>A year with tRPC</p>
+
+                    <div class="post-tags">
+                        <span class="chip accent">TypeScript</span>
+                        <span class="chip outline">#trpc</span>
+                        <span class="chip outline">#types</span>
+                        <span class="chip outline">#dx</span>
+                    </div>
+                </div>
+
+                <span class="read-time">6 min</span>
+            </a>
+
+            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
+                <time class="post-date">2026.04.14</time>
+
+                <div class="post-content">
+                    <h2>CSS Container Queries, 결국 쓰게 되더라</h2>
+                    <p>I came around to container queries</p>
+
+                    <div class="post-tags">
+                        <span class="chip accent">Frontend</span>
+                        <span class="chip outline">#css</span>
+                        <span class="chip outline">#layout</span>
+                    </div>
+                </div>
+
+                <span class="read-time">5 min</span>
+            </a>
+
+            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
+                <time class="post-date">2026.04.07</time>
+
+                <div class="post-content">
+                    <h2>Vibe coding 다음 단계 — 워크플로우 만들기</h2>
+                    <p>Beyond vibe coding</p>
+
+                    <div class="post-tags">
+                        <span class="chip accent">AI</span>
+                        <span class="chip outline">#ai</span>
+                        <span class="chip outline">#workflow</span>
+                        <span class="chip outline">#agents</span>
+                    </div>
+                </div>
+
+                <span class="read-time">12 min</span>
+            </a>
+
+            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
+                <time class="post-date">2026.03.30</time>
+
+                <div class="post-content">
+                    <h2>React 19 컴파일러로 useMemo를 지웠다</h2>
+                    <p>Removing useMemo with React 19</p>
+
+                    <div class="post-tags">
+                        <span class="chip accent">Performance</span>
+                        <span class="chip outline">#react</span>
+                        <span class="chip outline">#perf</span>
+                    </div>
+                </div>
+
+                <span class="read-time">7 min</span>
+            </a>
+
+            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
+                <time class="post-date">2026.03.22</time>
+
+                <div class="post-content">
+                    <h2>디자인 토큰을 코드로 옮기는 5가지 방법</h2>
+                    <p>Five ways to ship design tokens</p>
+
+                    <div class="post-tags">
+                        <span class="chip accent">Series · DS</span>
+                        <span class="chip outline">#design-system</span>
+                        <span class="chip outline">#series</span>
+                        <span class="chip outline">#5/8</span>
+                    </div>
+                </div>
+
+                <span class="read-time">9 min</span>
+            </a>
+
+        </section>
+
+    </section>
+
+</main>
+
+{% endblock %}

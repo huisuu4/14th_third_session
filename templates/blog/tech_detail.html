@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ post.title }} · {{ BRAND_NAME }}{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/tech_detail.css' %}">
+{% endblock %}
+
+
+{% block content %}
+{# TODO: W1 — 본문/TOC/Meta. W2 — 댓글 섹션. #}
+<div class="detail-page">
+
+    <div class="detail-main">
+
+        <aside class="detail-toc">
+            <p class="toc-title">ON THIS PAGE</p>
+
+            <a href="#token">1. 토큰이란</a>
+            <a href="#unit">2. 단위 결정</a>
+            <a href="#pipeline">3. 빌드 파이프라인</a>
+            <a href="#finish">4. 마무리</a>
+        </aside>
+
+        <article class="detail-article">
+
+            <header class="article-header">
+                <div class="article-meta">
+                    <span class="chip accent">Frontend</span>
+                    <span>2026.04.28</span>
+                    <span>·</span>
+                    <span>8 min</span>
+                    <span>·</span>
+                    <span>series 5/8</span>
+                </div>
+
+                <h1>손에 익는 디자인 시스템 만들기</h1>
+
+                <p class="article-subtitle">
+                    Designing a system that fits the hand — tokens, units, and the boring middle.
+                </p>
+            </header>
+
+            <div class="detail-line"></div>
+
+            <section class="article-body">
+
+                <p>
+                    디자인 시스템을 처음 만들 때, 저는 컴포넌트부터 시작했어요. 버튼, 카드, 입력 필드.
+                    그러다 알았죠. <span>토큰이 없는 컴포넌트는 집</span>이라는 걸요.
+                </p>
+
+                <h2 id="token">1. 토큰이란</h2>
+
+                <p>
+                    토큰은 디자인 결정에 이름을 붙이는 일이에요. --accent는 "주황색"이 아니라
+                    "강조되는 무엇"을 의미하죠.
+                </p>
+
+                <pre class="code-block"><code>:root {
+  --accent: #E8794A;        /* terracotta · primary */
+  --accent-hover: #C95A2C;  /* deeper rust */
+  --bg-page: #F5EDE0;       /* page · soft beige */
+}</code></pre>
+
+                <p id="unit">
+                    이름을 잘 붙이면, 색을 바꾸는 일이 의미를 바꾸는 일이 됩니다. 그게 시스템이에요.
+                </p>
+
+                <div class="article-divider"></div>
+
+            </section>
+
+            <section class="comments-section" id="finish">
+
+                <h2>comments · 4</h2>
+
+                <div class="comment-form">
+                    <div class="comment-avatar">BL</div>
+
+                    <div class="comment-field">
+                        <strong>아기사자</strong>
+                        <span>댓글을 남겨주세요...</span>
+                    </div>
+
+                    <button type="button">post →</button>
+                </div>
+
+                <div class="comment-list">
+
+                    <div class="comment-item">
+                        <div class="comment-avatar">JM</div>
+
+                        <div class="comment-content">
+                            <div class="comment-head">
+                                <strong>jaemin</strong>
+                                <span>2026.04.28</span>
+                            </div>
+
+                            <p>토큰 네이밍 진짜 어렵죠. semantic 레벨까지 가면 의견 갈리고요.</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-line"></div>
+
+                    <div class="comment-item">
+                        <div class="comment-avatar">SY</div>
+
+                        <div class="comment-content">
+                            <div class="comment-head">
+                                <strong>soyun</strong>
+                                <span>2026.04.29</span>
+                            </div>
+
+                            <p>다음 편 기다릴게요. 빌드 파이프라인 부분 궁금해요.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </article>
+
+        <aside class="detail-meta-side">
+
+            <p class="side-title">META</p>
+
+            <div class="meta-list">
+                <div class="meta-row">
+                    <span>author</span>
+                    <strong>아기사자</strong>
+                </div>
+
+                <div class="detail-line"></div>
+
+                <div class="meta-row">
+                    <span>edited</span>
+                    <strong>2026.04.29</strong>
+                </div>
+
+                <div class="meta-row">
+                    <span>views</span>
+                    <strong>1,284</strong>
+                </div>
+
+                <div class="meta-row">
+                    <span>license</span>
+                    <strong>CC BY 4.0</strong>
+                </div>
+            </div>
+
+            <div class="share-box">
+                <p>SHARE</p>
+
+                <div class="share-buttons">
+                    <button type="button">copy ⧉</button>
+                    <button type="button">x</button>
+                    <button type="button">rss</button>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+</div>
+
+{% endblock %}
