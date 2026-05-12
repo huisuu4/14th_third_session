@@ -6,22 +6,21 @@
 {# TODO: W1 — 본문/TOC/Meta. W2 — 댓글 섹션. #}
 <link rel="stylesheet" href="{% static 'css/tech_detail.css' %}">
 
-<div class="detail-page">
+<main class="detail-page">
 
-    <div class="detail-main">
+    <section class="detail-main">
 
-        <aside class="detail-toc">
+        <div class="detail-toc">
             <p class="toc-title">ON THIS PAGE</p>
-
-            <a href="#token">1. 토큰이란</a>
-            <a href="#unit">2. 단위 결정</a>
-            <a href="#pipeline">3. 빌드 파이프라인</a>
-            <a href="#finish">4. 마무리</a>
-        </aside>
+            <span>1. 토큰이란</span>
+            <span>2. 단위 결정</span>
+            <span>3. 빌드 파이프라인</span>
+            <span>4. 마무리</span>
+        </div>
 
         <article class="detail-article">
 
-            <header class="article-header">
+            <div class="article-header">
                 <div class="article-meta">
                     <span class="chip accent">Frontend</span>
                     <span>2026.04.28</span>
@@ -36,15 +35,14 @@
                 <p class="article-subtitle">
                     Designing a system that fits the hand — tokens, units, and the boring middle.
                 </p>
-            </header>
+            </div>
 
             <div class="detail-line"></div>
 
-            <section class="article-body">
-
+            <div class="article-body">
                 <p>
                     디자인 시스템을 처음 만들 때, 저는 컴포넌트부터 시작했어요. 버튼, 카드, 입력 필드.
-                    그러다 알았죠. <span>토큰이 없는 컴포넌트는 집</span>이라는 걸요.
+                    그러다 알았죠. 토큰이 없는 컴포넌트는 짐이라는 걸요.
                 </p>
 
                 <h2 id="token">1. 토큰이란</h2>
@@ -55,32 +53,28 @@
                 </p>
 
                 <pre class="code-block"><code>:root {
-  --accent: #E8794A;        /* terracotta · primary */
-  --accent-hover: #C95A2C;  /* deeper rust */
-  --bg-page: #F5EDE0;       /* page · soft beige */
+    --accent: #E8794A;        /* terracotta · primary */
+    --accent-hover: #C95A2C;  /* deeper rust */
+    --bg-page: #F5EDE0;       /* page · soft beige */
 }</code></pre>
 
                 <p id="unit">
                     이름을 잘 붙이면, 색을 바꾸는 일이 의미를 바꾸는 일이 됩니다. 그게 시스템이에요.
                 </p>
+            </div>
 
-                <div class="article-divider"></div>
+            <div class="detail-line"></div>
 
-            </section>
-
-            <section class="comments-section" id="finish">
-
+            <section class="comments-section">
                 <h2>comments · 4</h2>
 
                 <div class="comment-form">
-                    <div class="comment-avatar">BL</div>
-
                     <div class="comment-field">
-                        <strong>아기사자</strong>
-                        <span>댓글을 남겨주세요...</span>
+                        <strong>댓글을 남기려면 로그인이 필요해요</strong>
+                        <span>Sign in to leave a note on this page.</span>
                     </div>
 
-                    <button type="button">post →</button>
+                    <button type="button">Sign in →</button>
                 </div>
 
                 <div class="comment-list">
@@ -114,13 +108,11 @@
                     </div>
 
                 </div>
-
             </section>
 
         </article>
 
         <aside class="detail-meta-side">
-
             <p class="side-title">META</p>
 
             <div class="meta-list">
@@ -128,8 +120,6 @@
                     <span>author</span>
                     <strong>아기사자</strong>
                 </div>
-
-                <div class="detail-line"></div>
 
                 <div class="meta-row">
                     <span>edited</span>
@@ -151,16 +141,14 @@
                 <p>SHARE</p>
 
                 <div class="share-buttons">
-                    <button type="button">copy ⧉</button>
+                    <button type="button">copy ⎘</button>
                     <button type="button">x</button>
                     <button type="button">rss</button>
                 </div>
             </div>
-
         </aside>
 
-    </div>
+    </section>
 
-</div>
-
+</main>
 {% endblock %}
