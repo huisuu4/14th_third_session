@@ -3,11 +3,9 @@
 
 {% block title %}Tech · {{ BRAND_NAME }}{% endblock %}
 
-{% block extra_head %}
-<link rel="stylesheet" href="{% static 'css/tech_list.css' %}">
-{% endblock %}
-
 {% block content %}
+{# TODO: W1 — 아기 사자 작성 영역 #}
+<link rel="stylesheet" href="{% static 'css/tech_list.css' %}">
 
 <main class="tech-list-page">
 
@@ -15,37 +13,41 @@
 
         <div class="tech-list-header">
 
-            <div class="tech-title-area">
-                <p class="page-eyebrow">TECH NOTES</p>
+            <div class="tech-list-header-row">
 
-                <h1 class="page-title">만들면서 배운 것들.</h1>
+                <div class="tech-title-area">
+                    <p class="page-eyebrow">TECH NOTES</p>
 
-                <div class="category-row">
-                    <span class="chip accent">All</span>
-                    <span class="chip outline">Frontend</span>
-                    <span class="chip outline">TypeScript</span>
-                    <span class="chip outline">AI</span>
-                    <span class="chip outline">Performance</span>
-                    <span class="chip outline">Series · DS</span>
+                    <h1 class="page-title">만들면서 배운 것들.</h1>
+
+                    <div class="category-row">
+                        <span class="chip accent">All</span>
+                        <span class="chip outline">Frontend</span>
+                        <span class="chip outline">TypeScript</span>
+                        <span class="chip outline">AI</span>
+                        <span class="chip outline">Performance</span>
+                        <span class="chip outline">Series · DS</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="search-box">
-                <span class="search-icon">⌕</span>
-                <span class="search-placeholder">search posts...</span>
-                <span class="search-key">⌘K</span>
+                <div class="search-box">
+                    <span class="search-icon">⌕</span>
+                    <span class="search-placeholder">search posts...</span>
+                    <span class="search-key">⌘K</span>
+                </div>
+
             </div>
 
         </div>
 
-        <section class="post-list">
+        <div class="post-list">
 
             <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <time class="post-date">2026.04.28</time>
+                <span class="post-date">2026.04.28</span>
 
                 <div class="post-content">
-                    <h2>손에 익는 디자인 시스템 만들기</h2>
-                    <p>Designing a system that fits the hand</p>
+                    <h2 class="post-title">손에 익는 디자인 시스템 만들기</h2>
+                    <p class="post-subtitle">Designing a system that fits the hand</p>
 
                     <div class="post-tags">
                         <span class="chip accent">Frontend</span>
@@ -59,11 +61,11 @@
             </a>
 
             <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <time class="post-date">2026.04.21</time>
+                <span class="post-date">2026.04.21</span>
 
                 <div class="post-content">
-                    <h2>tRPC와 함께한 1년: 좋았던 것, 불편했던 것</h2>
-                    <p>A year with tRPC</p>
+                    <h2 class="post-title">tRPC와 함께한 1년: 좋았던 것, 불편했던 것</h2>
+                    <p class="post-subtitle">A year with tRPC</p>
 
                     <div class="post-tags">
                         <span class="chip accent">TypeScript</span>
@@ -77,11 +79,11 @@
             </a>
 
             <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <time class="post-date">2026.04.14</time>
+                <span class="post-date">2026.04.14</span>
 
                 <div class="post-content">
-                    <h2>CSS Container Queries, 결국 쓰게 되더라</h2>
-                    <p>I came around to container queries</p>
+                    <h2 class="post-title">CSS Container Queries, 결국 쓰게 되더라</h2>
+                    <p class="post-subtitle">I came around to container queries</p>
 
                     <div class="post-tags">
                         <span class="chip accent">Frontend</span>
@@ -94,11 +96,11 @@
             </a>
 
             <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <time class="post-date">2026.04.07</time>
+                <span class="post-date">2026.04.07</span>
 
                 <div class="post-content">
-                    <h2>Vibe coding 다음 단계 — 워크플로우 만들기</h2>
-                    <p>Beyond vibe coding</p>
+                    <h2 class="post-title">Vibe coding 다음 단계 — 워크플로우 만들기</h2>
+                    <p class="post-subtitle">Beyond vibe coding</p>
 
                     <div class="post-tags">
                         <span class="chip accent">AI</span>
@@ -112,11 +114,11 @@
             </a>
 
             <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <time class="post-date">2026.03.30</time>
+                <span class="post-date">2026.03.30</span>
 
                 <div class="post-content">
-                    <h2>React 19 컴파일러로 useMemo를 지웠다</h2>
-                    <p>Removing useMemo with React 19</p>
+                    <h2 class="post-title">React 19 컴파일러로 useMemo를 지웠다</h2>
+                    <p class="post-subtitle">Removing useMemo with React 19</p>
 
                     <div class="post-tags">
                         <span class="chip accent">Performance</span>
@@ -129,11 +131,11 @@
             </a>
 
             <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <time class="post-date">2026.03.22</time>
+                <span class="post-date">2026.03.22</span>
 
                 <div class="post-content">
-                    <h2>디자인 토큰을 코드로 옮기는 5가지 방법</h2>
-                    <p>Five ways to ship design tokens</p>
+                    <h2 class="post-title">디자인 토큰을 코드로 옮기는 5가지 방법</h2>
+                    <p class="post-subtitle">Five ways to ship design tokens</p>
 
                     <div class="post-tags">
                         <span class="chip accent">Series · DS</span>
@@ -146,7 +148,7 @@
                 <span class="read-time">9 min</span>
             </a>
 
-        </section>
+        </div>
 
     </section>
 

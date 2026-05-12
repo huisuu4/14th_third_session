@@ -2,13 +2,10 @@
 {% load static %}
 {% block title %}{{ post.title }} · {{ BRAND_NAME }}{% endblock %}
 
-{% block extra_head %}
-<link rel="stylesheet" href="{% static 'css/tech_detail.css' %}">
-{% endblock %}
-
-
 {% block content %}
 {# TODO: W1 — 본문/TOC/Meta. W2 — 댓글 섹션. #}
+<link rel="stylesheet" href="{% static 'css/tech_detail.css' %}">
+
 <div class="detail-page">
 
     <div class="detail-main">
