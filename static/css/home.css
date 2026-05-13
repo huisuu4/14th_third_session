@@ -86,9 +86,13 @@
     font-weight: 600;
     line-height: 160%;
     text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 80ms ease-out;
     box-sizing: border-box;
+}
+
+.home-button:hover {
+    background: var(--beige-bg-sunken, #EFE4D2);
+    color: var(--beige-ink-1, #3A2419);
 }
 
 .home-button:active {
@@ -103,10 +107,12 @@
 
 .home-button.primary:hover {
     background-color: var(--beige-accent-hover, #C95A2C);
+    color: var(--beige-bg-paper, #FBF6EC);
 }
 
 .home-button.sub:hover {
     background-color: var(--beige-bg-sunken, #EFE4D2);
+    color: var(--beige-ink-1, #3A2419);
 }
 
 .now-writing {
@@ -187,7 +193,6 @@
     font-size: 12px;
     font-weight: 400;
     line-height: 100%;
-    cursor: pointer;
     transition: all 0.2s ease;
     text-decoration: none;
 }
@@ -212,13 +217,13 @@
     background: var(--beige-bg-paper, #FBF6EC);
     color: inherit;
     text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 150ms ease-out, box-shadow 150ms ease-out;
     box-sizing: border-box;
 }
 
 .featured-card:hover {
     transform: translateY(-2px);
+    box-shadow: 0 2px 4px #3A24190F, 0 8px 20px #3A241912;
 }
 
 .latest-card:hover {
@@ -312,7 +317,6 @@
     font-size: 12px;
     font-weight: 400;
     line-height: 100%;
-    cursor: pointer;
 }
 
 .latest-card {
@@ -324,7 +328,6 @@
     border-radius: 12px;
     border: 1px solid var(--beige-line-default, #D9C7A8);
     background: var(--beige-bg-paper, #FBF6EC);
-    transition: all 0.2s ease;
     box-sizing: border-box;
 }
 
@@ -371,11 +374,4 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 160%;
-
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.latest-item strong:hover {
-    color: var(--beige-accent-ink, #8C3A19);
 }
