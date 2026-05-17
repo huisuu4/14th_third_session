@@ -59,7 +59,6 @@
 
 .hero-bio {
     margin: 0;
-
     color: var(--beige-ink-3, #8A6A55);
     font-family: Inter;
     font-size: 17px;
@@ -78,9 +77,7 @@
     align-items: flex-start;
     gap: 8px;
     border-radius: 8px;
-    border: 1px solid var(--beige-line-strong, #B59C82);
-    background-color: var(--beige-bg-paper, #FBF6EC);
-    color: var(--beige-ink-1, #3A2419);
+    border: 1px solid var(--beige-line-strong, #B59C82);    color: var(--beige-ink-1, #3A2419);
     font-family: Inter;
     font-size: 14px;
     font-weight: 600;
@@ -91,7 +88,6 @@
 }
 
 .home-button:hover {
-    background: var(--beige-bg-sunken, #EFE4D2);
     color: var(--beige-ink-1, #3A2419);
 }
 
@@ -99,19 +95,19 @@
     transform: scale(0.98);
 }
 
-.home-button.primary {
+.home-button.first {
     color: var(--beige-bg-paper, #FBF6EC);
     background-color: var(--beige-accent-default, #E8794A);
     border: none;
 }
 
-.home-button.primary:hover {
+.home-button.first:hover {
     background-color: var(--beige-accent-hover, #C95A2C);
     color: var(--beige-bg-paper, #FBF6EC);
 }
 
-.home-button.sub:hover {
-    background-color: var(--beige-bg-sunken, #EFE4D2);
+.home-button.second:hover {
+    background-color: var(--beige-bg-paper, #FBF6EC);
     color: var(--beige-ink-1, #3A2419);
 }
 
@@ -131,6 +127,17 @@
     font-size: 12px;
     font-weight: 400;
     line-height: 100%;
+}
+
+.now-label::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--beige-accent-default, #E8794A);
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
 }
 
 .now-title {
