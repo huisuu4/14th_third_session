@@ -41,32 +41,13 @@
             <div class="detail-line"></div>
 
             <div class="article-body">
-                {% for section in sections|slice:':2' %}
-                {% if section.kind == 'p' %}
-                <span>{{ section.text }}</span>
-                {% endif %}
-                {% endfor %}
-
-
-                <h2 id="token">1. {{ sections.1.text }}</h2>
-
-                {% for section in sections|slice:'2:3' %}
-                {% if section.kind == 'p' %}
-                <span>{{ section.text }}</span>
-                {% endif %}
-                {% endfor %}
-
-                <pre class="code-block">
                 {% for section in sections %}
-                {% if section.kind == 'code' %}
-                <span>{{ section.text }}</span>
-                {% endif %}
-                {% endfor %}
-                </pre>
-
-                {% for section in sections|slice:'4:5' %}
-                {% if section.kind == 'p' %}
-                <span>{{ section.text }}</span>
+                {% if section.kind == 'h2' %}
+                <h2>{{ section.anchor|slice:'4:' }}. {{ section.text }}</h2>
+                {% elif section.kind == 'p' %}
+                <p>{{ section.text }}</p>
+                {% elif section.kind == 'code' %}
+                <pre class="code-block">{{ section.text }}</pre>
                 {% endif %}
                 {% endfor %}
 
