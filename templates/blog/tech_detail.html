@@ -24,7 +24,7 @@
             <div class="article-header">
                 <div class="article-meta">
                     <span class="chip accent">{{ post.category.label }}</span>
-                    <span>{{ post.published_at }}</span>
+                    <span>{{ post.published_at|date:'Y.m.d' }}</span>
                     <span>·</span>
                     <span>{{ post.read_minutes }} min</span>
                     <span>·</span>

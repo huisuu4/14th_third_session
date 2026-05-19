@@ -74,6 +74,10 @@
     background: var(--beige-bg-paper, #FBF6EC);
 }
 
+.search-box:focus-within {
+    border: 1px solid var(--beige-line-strong, #B59C82);
+}
+
 .search-icon {
     display: flex;
     align-items: center;
@@ -134,7 +138,7 @@
 
 .chip.outline:hover {
     border: 1px solid var(--beige-line-strong, #B59C82);
-    background: var(--beige-bg-sunken, #EFE4D2);
+    background: var(--beige-bg-sunken, #efe4d2);
 }
 
 .post-list {

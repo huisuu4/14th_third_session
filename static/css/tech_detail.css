@@ -13,14 +13,16 @@
     align-self: stretch;
 }
 
-/* 왼쪽 목차 */
-
 .detail-toc {
     display: flex;
     width: 220px;
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+}
+
+.detail-toc span:hover {
+    color: var(--beige-accent-hover, #C95A2C);
 }
 
 .toc-title {
@@ -45,10 +47,6 @@
     font-weight: 400;
     line-height: 160%;
     border-left: 1px solid var(--beige-line-default, #D9C7A8);
-}
-
-.detail-toc span:first-of-type {
-    color: var(--beige-accent-default, #EF7448);
 }
 
 .detail-article {
@@ -381,6 +379,10 @@
     line-height: 100%;
 }
 
+.share-buttons button:hover {
+    background: var(--beige-bg-sunken, #EFE4D2);
+}
+
 .detail-page .chip {
     display: flex;
     padding: 4px 10px;
@@ -401,6 +403,10 @@
     color: var(--beige-accent-ink, #8C3A19);
 }
 
-.comment-form button:hover {
+.comment-form button:active {
     transform: scale(0.98);
+}
+
+.comment-form button:hover {
+    background: var(--beige-accent-hover, #C95A2C);
 }
