@@ -16,17 +16,15 @@
             <div class="tech-list-header-row">
 
                 <div class="tech-title-area">
-                    <p class="page-eyebrow">TECH NOTES</p>
+                    <p class="page-eyebrow">{{ page_eyebrow }}</p>
 
-                    <h1 class="page-title">만들면서 배운 것들.</h1>
+                    <h1 class="page-title">{{ page_h1 }}</h1>
 
                     <div class="category-row">
                         <span class="chip accent">All</span>
-                        <span class="chip outline">Frontend</span>
-                        <span class="chip outline">TypeScript</span>
-                        <span class="chip outline">AI</span>
-                        <span class="chip outline">Performance</span>
-                        <span class="chip outline">Series · DS</span>
+                        {% for category in categories %}
+                        <span class="chip outline">{{ category.label }}</span>
+                        {% endfor %}
                     </div>
                 </div>
 
@@ -42,111 +40,23 @@
 
         <div class="post-list">
 
-            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <span class="post-date">2026.04.28</span>
-
+            {% for post in posts %}
+            <a href="{{ post.get_absolute_url }}" class="post-row">
+                <span class="post-date">{{ post.date_display }}</span>
                 <div class="post-content">
-                    <h2 class="post-title">손에 익는 디자인 시스템 만들기</h2>
-                    <p class="post-subtitle">Designing a system that fits the hand</p>
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <p class="post-subtitle">{{ post.subtitle }}</p>
 
                     <div class="post-tags">
-                        <span class="chip accent">Frontend</span>
-                        <span class="chip outline">#design-system</span>
-                        <span class="chip outline">#tokens</span>
-                        <span class="chip outline">#css</span>
+                        <span class="chip accent">{{ post.category.label }}</span>
+                        {% for tag in post.tags.all %}
+                        <span class="chip outline">#{{ tag.label }}</span>
+                        {% endfor %}
                     </div>
                 </div>
-
-                <span class="read-time">8 min</span>
+                <span class="read-time">{{ post.read_minutes }} min</span>
             </a>
-
-            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <span class="post-date">2026.04.21</span>
-
-                <div class="post-content">
-                    <h2 class="post-title">tRPC와 함께한 1년: 좋았던 것, 불편했던 것</h2>
-                    <p class="post-subtitle">A year with tRPC</p>
-
-                    <div class="post-tags">
-                        <span class="chip accent">TypeScript</span>
-                        <span class="chip outline">#trpc</span>
-                        <span class="chip outline">#types</span>
-                        <span class="chip outline">#dx</span>
-                    </div>
-                </div>
-
-                <span class="read-time">6 min</span>
-            </a>
-
-            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <span class="post-date">2026.04.14</span>
-
-                <div class="post-content">
-                    <h2 class="post-title">CSS Container Queries, 결국 쓰게 되더라</h2>
-                    <p class="post-subtitle">I came around to container queries</p>
-
-                    <div class="post-tags">
-                        <span class="chip accent">Frontend</span>
-                        <span class="chip outline">#css</span>
-                        <span class="chip outline">#layout</span>
-                    </div>
-                </div>
-
-                <span class="read-time">5 min</span>
-            </a>
-
-            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <span class="post-date">2026.04.07</span>
-
-                <div class="post-content">
-                    <h2 class="post-title">Vibe coding 다음 단계 — 워크플로우 만들기</h2>
-                    <p class="post-subtitle">Beyond vibe coding</p>
-
-                    <div class="post-tags">
-                        <span class="chip accent">AI</span>
-                        <span class="chip outline">#ai</span>
-                        <span class="chip outline">#workflow</span>
-                        <span class="chip outline">#agents</span>
-                    </div>
-                </div>
-
-                <span class="read-time">12 min</span>
-            </a>
-
-            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <span class="post-date">2026.03.30</span>
-
-                <div class="post-content">
-                    <h2 class="post-title">React 19 컴파일러로 useMemo를 지웠다</h2>
-                    <p class="post-subtitle">Removing useMemo with React 19</p>
-
-                    <div class="post-tags">
-                        <span class="chip accent">Performance</span>
-                        <span class="chip outline">#react</span>
-                        <span class="chip outline">#perf</span>
-                    </div>
-                </div>
-
-                <span class="read-time">7 min</span>
-            </a>
-
-            <a href="{% url 'tech_detail' 'design-system-that-fits-the-hand' %}" class="post-row">
-                <span class="post-date">2026.03.22</span>
-
-                <div class="post-content">
-                    <h2 class="post-title">디자인 토큰을 코드로 옮기는 5가지 방법</h2>
-                    <p class="post-subtitle">Five ways to ship design tokens</p>
-
-                    <div class="post-tags">
-                        <span class="chip accent">Series · DS</span>
-                        <span class="chip outline">#design-system</span>
-                        <span class="chip outline">#series</span>
-                        <span class="chip outline">#5/8</span>
-                    </div>
-                </div>
-
-                <span class="read-time">9 min</span>
-            </a>
+            {% endfor %}
 
         </div>
 

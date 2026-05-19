@@ -144,15 +144,7 @@
     border-radius: 8px;
     border: 1px solid var(--beige-line-default, #D9C7A8);
     background: var(--beige-bg-muted, #EFE2CF);
-}
-
-.code-block code {
-    color: var(--beige-ink-2, #5B3A28);
     font-family: "JetBrains Mono";
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 160%;
 }
 
 .comments-section {

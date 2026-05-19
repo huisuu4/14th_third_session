@@ -70,60 +70,34 @@
                         </div>
 
                         <h3>{{ featured.title }}</h3>
-                        <p>
-                            토큰을 짓는 일은 결국 이름을 짓는 일이다. 작은 결정에 이름을 붙이는 일 — 그게 시스템이다.
-                        </p>
+                        <p>토큰을 짓는 일은 결국 이름을 짓는 일이다. 작은 결정에 이름을 붙이는 일 — 그게 시스템이다.</p>
                         <span class="featured-read">이어 읽기 →</span>
                     </div>
                 </a>
 
-                <aside class="latest-card">
+                <div class="latest-card">
                     <p class="latest-heading">LATEST · 최근 5편</p>
-
-                    <a href="{% url 'tech_detail' featured.slug %}" class="latest-item">
+                    {% for other in others %}
+                    <a href="{% url 'tech_detail' other.slug %}" class="latest-item">
                         <div class="latest-meta">
-                            <span class="chip accent">TypeScript</span>
-                            <span class="latest-date">04.21</span>
+                            <span class="chip accent">{{ other.category.label }}</span>
+                            <span class="latest-date">{{ other.date_display|slice:'5:' }}</span>
                         </div>
-                        <strong>tRPC와 함께한 1년: 좋았던 것, 불편했던 것</strong>
+                        <strong>{{ other.title }}</strong>
                     </a>
-
-                    <a href="{% url 'tech_detail' featured.slug %}" class="latest-item">
-                        <div class="latest-meta">
-                            <span class="chip accent">Frontend</span>
-                            <span class="latest-date">04.14</span>
-                        </div>
-                        <strong>CSS Container Queries, 결국 쓰게 되더라</strong>
-                    </a>
-
-                    <a href="{% url 'tech_detail' featured.slug %}" class="latest-item">
-                        <div class="latest-meta">
-                            <span class="chip accent">AI</span>
-                            <span class="latest-date">04.07</span>
-                        </div>
-                        <strong>Vibe coding 다음 단계 — 워크플로우 만들기</strong>
-                    </a>
-
-                    <a href="{% url 'tech_detail' featured.slug %}" class="latest-item">
-                        <div class="latest-meta">
-                            <span class="chip accent">Performance</span>
-                            <span class="latest-date">03.30</span>
-                        </div>
-                        <strong>React 19 컴파일러로 useMemo를 지웠다</strong>
-                    </a>
-
-                    <a href="{% url 'tech_detail' featured.slug %}" class="latest-item">
+                    {% endfor %}
+                    <div class="latest-item">
                         <div class="latest-meta">
                             <span class="chip accent">Series · DS</span>
                             <span class="latest-date">03.22</span>
                         </div>
                         <strong>디자인 토큰을 코드로 옮기는 5가지 방법</strong>
-                    </a>
-                </aside>
+                    </div>
+
+
+                </div>
 
             </div>
-
-        </div>
     </section>
 
 </main>

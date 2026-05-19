@@ -12,103 +12,110 @@
 
         <div class="detail-toc">
             <p class="toc-title">ON THIS PAGE</p>
-            <span>1. 토큰이란</span>
-            <span>2. 단위 결정</span>
-            <span>3. 빌드 파이프라인</span>
-            <span>4. 마무리</span>
+            {% for section in sections %}
+            {% if section.kind == 'h2' %}
+            <span>{{ section.anchor|slice:'4:'}}. {{ section.text }}</span>
+            {% endif %}
+            {% endfor %}
         </div>
 
         <article class="detail-article">
 
             <div class="article-header">
                 <div class="article-meta">
-                    <span class="chip accent">Frontend</span>
-                    <span>2026.04.28</span>
+                    <span class="chip accent">{{ post.category.label }}</span>
+                    <span>{{ post.published_at }}</span>
                     <span>·</span>
-                    <span>8 min</span>
+                    <span>{{ post.read_minutes }} min</span>
                     <span>·</span>
-                    <span>series 5/8</span>
+                    <span>{{ post.series_label }}</span>
                 </div>
 
-                <h1>손에 익는 디자인 시스템 만들기</h1>
+                <h1>{{ post.title }}</h1>
 
                 <p class="article-subtitle">
-                    Designing a system that fits the hand — tokens, units, and the boring middle.
+                    {{ post.subtitle }} — tokens, units, and the boring middle.
                 </p>
             </div>
 
             <div class="detail-line"></div>
 
             <div class="article-body">
-                <p>
-                    디자인 시스템을 처음 만들 때, 저는 컴포넌트부터 시작했어요. 버튼, 카드, 입력 필드.
-                    그러다 알았죠. 토큰이 없는 컴포넌트는 짐이라는 걸요.
-                </p>
+                {% for section in sections|slice:':2' %}
+                {% if section.kind == 'p' %}
+                <span>{{ section.text }}</span>
+                {% endif %}
+                {% endfor %}
 
-                <h2 id="token">1. 토큰이란</h2>
 
-                <p>
-                    토큰은 디자인 결정에 이름을 붙이는 일이에요. --accent는 "주황색"이 아니라
-                    "강조되는 무엇"을 의미하죠.
-                </p>
+                <h2 id="token">1. {{ sections.1.text }}</h2>
 
-                <pre class="code-block"><code>:root {
-    --accent: #E8794A;        /* terracotta · primary */
-    --accent-hover: #C95A2C;  /* deeper rust */
-    --bg-page: #F5EDE0;       /* page · soft beige */
-}</code></pre>
+                {% for section in sections|slice:'2:3' %}
+                {% if section.kind == 'p' %}
+                <span>{{ section.text }}</span>
+                {% endif %}
+                {% endfor %}
 
-                <p id="unit">
-                    이름을 잘 붙이면, 색을 바꾸는 일이 의미를 바꾸는 일이 됩니다. 그게 시스템이에요.
-                </p>
-            </div>
+                <pre class="code-block">
+                {% for section in sections %}
+                {% if section.kind == 'code' %}
+                <span>{{ section.text }}</span>
+                {% endif %}
+                {% endfor %}
+                </pre>
 
-            <div class="detail-line"></div>
+                {% for section in sections|slice:'4:5' %}
+                {% if section.kind == 'p' %}
+                <span>{{ section.text }}</span>
+                {% endif %}
+                {% endfor %}
 
-            <section class="comments-section">
-                <h2>comments · 4</h2>
+                <div class="detail-line"></div>
 
-                <div class="comment-form">
-                    <div class="comment-field">
-                        <strong>댓글을 남기려면 로그인이 필요해요</strong>
-                        <span>Sign in to leave a note on this page.</span>
-                    </div>
+                <section class="comments-section">
+                    <h2>comments · 4</h2>
 
-                    <button type="button">Sign in →</button>
-                </div>
-
-                <div class="comment-list">
-
-                    <div class="comment-item">
-                        <div class="comment-avatar">JM</div>
-
-                        <div class="comment-content">
-                            <div class="comment-head">
-                                <strong>jaemin</strong>
-                                <span>2026.04.28</span>
-                            </div>
-
-                            <p>토큰 네이밍 진짜 어렵죠. semantic 레벨까지 가면 의견 갈리고요.</p>
+                    <div class="comment-form">
+                        <div class="comment-field">
+                            <strong>댓글을 남기려면 로그인이 필요해요</strong>
+                            <span>Sign in to leave a note on this page.</span>
                         </div>
+
+                        <button type="button">Sign in →</button>
                     </div>
 
-                    <div class="detail-line"></div>
+                    <div class="comment-list">
 
-                    <div class="comment-item">
-                        <div class="comment-avatar">SY</div>
+                        <div class="comment-item">
+                            <div class="comment-avatar">JM</div>
 
-                        <div class="comment-content">
-                            <div class="comment-head">
-                                <strong>soyun</strong>
-                                <span>2026.04.29</span>
+                            <div class="comment-content">
+                                <div class="comment-head">
+                                    <strong>jaemin</strong>
+                                    <span>2026.04.28</span>
+                                </div>
+
+                                <p>토큰 네이밍 진짜 어렵죠. semantic 레벨까지 가면 의견 갈리고요.</p>
                             </div>
-
-                            <p>다음 편 기다릴게요. 빌드 파이프라인 부분 궁금해요.</p>
                         </div>
-                    </div>
 
-                </div>
-            </section>
+                        <div class="detail-line"></div>
+
+                        <div class="comment-item">
+                            <div class="comment-avatar">SY</div>
+
+                            <div class="comment-content">
+                                <div class="comment-head">
+                                    <strong>soyun</strong>
+                                    <span>2026.04.29</span>
+                                </div>
+
+                                <p>다음 편 기다릴게요. 빌드 파이프라인 부분 궁금해요.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
 
         </article>
 
@@ -123,17 +130,17 @@
 
                 <div class="meta-row">
                     <span>edited</span>
-                    <strong>2026.04.29</strong>
+                    <strong>{{ post.edited_at }}</strong>
                 </div>
 
                 <div class="meta-row">
                     <span>views</span>
-                    <strong>1,284</strong>
+                    <strong>{{ post.views }}</strong>
                 </div>
 
                 <div class="meta-row">
                     <span>license</span>
-                    <strong>CC BY 4.0</strong>
+                    <strong>{{ post.license }}</strong>
                 </div>
             </div>
 
