@@ -16,6 +16,9 @@ urlpatterns = [
     path('signup/', views.signup_view, name='signup'),
     path('logout/', views.logout_view, name='logout'),
 
+    # 댓글 등록 — form method="POST"
+    path('tech/<slug:slug>/comments/', views.comment_submit, name='comment_submit'),
+
     # JSON API (2주차 — fetch로 호출)
     # GET  /api/posts/<slug>/comments/  → 댓글 목록
     # POST /api/posts/<slug>/comments/  → 댓글 추가 (로그인 필요)

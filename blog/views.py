@@ -6,6 +6,7 @@ blog/views.py
 
 아기 사자 여러분은 이 파일을 수정할 일이 거의 없어요. 데이터 접근 방식만 참고하세요.
 """
+
 import json
 
 from django.contrib.auth import authenticate, login, logout
@@ -89,10 +90,11 @@ def home(request):
 
 def tech_list(request):
     """기술 글 목록 페이지 (TechA)"""
-    posts = list(
-        TechPost.objects.select_related('category').prefetch_related('tags')
-        .order_by('-published_at')
-    )
+    selected_cat = request.GET.get('category', 'all')
+    qs = TechPost.objects.select_related('category').prefetch_related('tags').order_by('-published_at')
+    if selected_cat != 'all':
+        qs = qs.filter(category__slug=selected_cat)
+    posts = list(qs)
     categories = list(Category.objects.all())
     return render(request, 'blog/tech_list.html', {
         'active_nav': 'tech',
@@ -101,6 +103,7 @@ def tech_list(request):
         'page_number': '03 / 05',
         'posts': posts,
         'categories': categories,
+        'selected_cat': selected_cat,
     })
 
 
@@ -110,13 +113,33 @@ def tech_detail(request, slug):
         TechPost.objects.select_related('category').prefetch_related('tags'),
         slug=slug,
     )
+    from django.urls import reverse
     sections = _parse_body(post.body)
+    comments = list(post.comments.all().order_by('created_at'))
     return render(request, 'blog/tech_detail.html', {
         'active_nav': 'tech',
         'page_number': '03 / 05',
         'post': post,
         'sections': sections,
+        'comments': comments,
+        'comment_url': reverse('comment_submit', args=[slug]),
     })
+
+
+def comment_submit(request, slug):
+    """댓글 등록 — HTML form POST, 완료 후 해당 글로 redirect"""
+    if request.method == 'POST' and request.user.is_authenticated:
+        post = get_object_or_404(TechPost, slug=slug)
+        body = (request.POST.get('body') or '').strip()
+        if body:
+            display_name = request.user.first_name or request.user.username
+            Comment.objects.create(
+                post=post,
+                user=request.user,
+                author_name=display_name[:40],
+                body=body[:500],
+            )
+    return redirect('tech_detail', slug=slug)
 
 
 def _parse_body(body: str):
@@ -207,9 +230,11 @@ def projects_list(request):
 
 def daily_list(request):
     """일일 노트 목록 (DailyA)"""
-    entries = list(
-        DailyEntry.objects.select_related('category').order_by('-published_at')
-    )
+    selected_cat = request.GET.get('category', 'all')
+    qs = DailyEntry.objects.select_related('category').order_by('-published_at')
+    if selected_cat != 'all':
+        qs = qs.filter(category__slug=selected_cat)
+    entries = list(qs)
     categories = list(DailyCategory.objects.all())
     return render(request, 'blog/daily_list.html', {
         'active_nav': 'daily',
@@ -218,6 +243,7 @@ def daily_list(request):
         'page_number': '05 / 05',
         'entries': entries,
         'categories': categories,
+        'selected_cat': selected_cat,
     })
 
 

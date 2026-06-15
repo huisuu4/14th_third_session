@@ -1,7 +1,47 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}로그인 · {{ BRAND_NAME }}{% endblock %}
 
 {% block content %}
 {# TODO: W3 — 아기 사자 작성 영역 #}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+<main class="login-page">
+    <div class="paper-card">
+        <div class="login-header">
+            <div class="login">LOGIN · 로그인</div>
+            <div class="login-second">다시 오셨네요.</div>
+            <div class="login-third">Welcome back. Sign in to leave notes and comments.</div>
+        </div>
+
+        <div class="NoteDivider"></div>
+
+        <form action="{% url 'login' %}" method="post" class="form-box">
+            {% csrf_token %}
+            <div class="form">
+                <label for="login-id">ID</label>
+                <input id="login-id" type="text" name="id" placeholder="babyLion" required>
+            </div>
+
+            <div class="form">
+                <label for="login-password">PASSWORD</label>
+                <input id="login-password" type="password" name="password" placeholder="••••••••" required>
+            </div>
+
+            <div class="ForgotRow">forgot password?</div>
+
+            <div class="RememberRow">
+                <input id="remember" type="checkbox" name="remember" required>
+                <label for="remember">Remember me on this paper</label>
+            </div>
+
+            <button type="submit" class="button">Sign in →</button>
+        </form>
+
+        <div class="login-footer">
+            처음이신가요? <a href="{% url 'signup' %}" class="signup">Create an account</a>
+        </div>
+    </div>
+</main>
 {% endblock %}

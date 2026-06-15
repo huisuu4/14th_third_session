@@ -1,7 +1,52 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}회원가입 · {{ BRAND_NAME }}{% endblock %}
 
 {% block content %}
 {# TODO: W3 — 아기 사자 작성 영역 #}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+
+<main class="signup-page">
+    <div class="paper-card">
+        <div class="signup-header">
+            <div class="signup">SIGN UP · 회원가입</div>
+            <div class="signup-second">처음 오셨네요<span>.</span></div>
+            <div class="signup-third">Make a paper to leave notes, save posts, and join the conversation.</div>
+        </div>
+
+        <div class="NoteDivider"></div>
+
+        <form action="{% url 'signup' %}" method="post" class="form-box">
+            {% csrf_token %}
+            <div class="form">
+                <label for="signup-username">NAME · 이름</label>
+                <input id="signup-username" type="text" name="username" placeholder="Like Lion" required>
+            </div>
+
+            <div class="form">
+                <label for="signup-id">ID</label>
+                <input id="signup-id" type="text" name="id" placeholder="babyLion" required>
+            </div>
+
+            <div class="form">
+                <label for="signup-password">PASSWORD</label>
+                <input id="signup-password" type="password" name="password" placeholder="8자 이상, 영문/숫자 포함" required>
+            </div>
+
+            <div class="TermsRow">
+                <input id="agree" type="checkbox" name="agree" required>
+                <label for="agree"><span>이용약관</span>과 <span>개인정보 처리방침</span>에 동의합니다.
+                    <br>I agree to the <span>Terms</span> and <span>Privacy Policy</span>.</label>
+            </div>
+
+            <button type="submit" class="button">Create account →</button>
+        </form>
+
+        <div class="signup-footer">
+            이미 계정이 있으신가요? <a href="{% url 'login' %}" class="login">Sign in</a>
+        </div>
+    </div>
+</main>
+
 {% endblock %}

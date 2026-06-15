@@ -54,47 +54,62 @@
                 <div class="detail-line"></div>
 
                 <section class="comments-section">
-                    <h2>comments · 4</h2>
+                    <h2>comments · {{ comments|length }}</h2>
 
                     <div class="comment-form">
+                        {% if user.is_authenticated %}
+                        <form action="{{ comment_url }}" method="post">
+                            {% csrf_token %}
+                            <div class="comment-field">
+                                <div class="comment-avatar">
+                                    <div class="BL">
+                                        {{ user.first_name }}
+                                    </div>
+                                </div>
+                                <div class="blankcomment">
+                                    <div class="namecomment">{{ user.first_name }}</div>
+                                    <input class="writecomment" name="body" type="text" placeholder="댓글을 남겨 주세요…" required>
+                                </div>
+
+                                <button type="submit" class="button">
+                                    <div class="signin">post →</div>
+                                </button>
+                            </div>
+                        </form>
+
+                        {% else %}
                         <div class="comment-field">
                             <strong>댓글을 남기려면 로그인이 필요해요</strong>
                             <span>Sign in to leave a note on this page.</span>
                         </div>
 
-                        <button type="button">Sign in →</button>
+                        <a href="{% url 'login' %}" class="button">
+                            <div class="signin">Sign in →</div>
+                        </a>
+                        {% endif %}
                     </div>
 
+
+
                     <div class="comment-list">
-
+                        {% for comment in comments %}
                         <div class="comment-item">
-                            <div class="comment-avatar">JM</div>
+                            <div class="comment-avatar">{{ comment.initials }}</div>
 
                             <div class="comment-content">
                                 <div class="comment-head">
-                                    <strong>jaemin</strong>
-                                    <span>2026.04.28</span>
+                                    <strong>{{ comment.display_name }}</strong>
+                                    <span>{{ comment.date_display }}</span>
                                 </div>
 
-                                <p>토큰 네이밍 진짜 어렵죠. semantic 레벨까지 가면 의견 갈리고요.</p>
+                                <p>{{ comment.body }}</p>
                             </div>
                         </div>
 
+                        {% if not forloop.last %}
                         <div class="detail-line"></div>
-
-                        <div class="comment-item">
-                            <div class="comment-avatar">SY</div>
-
-                            <div class="comment-content">
-                                <div class="comment-head">
-                                    <strong>soyun</strong>
-                                    <span>2026.04.29</span>
-                                </div>
-
-                                <p>다음 편 기다릴게요. 빌드 파이프라인 부분 궁금해요.</p>
-                            </div>
-                        </div>
-
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </section>
 
@@ -111,7 +126,7 @@
 
                 <div class="meta-row">
                     <span>edited</span>
-                    <strong>{{ post.edited_at }}</strong>
+                    <strong>{{ post.edited_at|date:"Y.m.d" }}</strong>
                 </div>
 
                 <div class="meta-row">
