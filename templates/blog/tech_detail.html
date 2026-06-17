@@ -60,96 +60,92 @@
                         {% if user.is_authenticated %}
                         <form action="{{ comment_url }}" method="post">
                             {% csrf_token %}
-                            <div class="comment-field">
                                 <div class="comment-avatar">
-                                    <div class="BL">
-                                        {{ user.first_name }}
-                                    </div>
+                                    {{ user.username|slice:":2"|upper }}
                                 </div>
-                                <div class="blankcomment">
-                                    <div class="namecomment">{{ user.first_name }}</div>
-                                    <input class="writecomment" name="body" type="text" placeholder="댓글을 남겨 주세요…" required>
-                                </div>
-
-                                <button type="submit" class="button">
-                                    <div class="signin">post →</div>
-                                </button>
+                            <div class="blankcomment">
+                                <div class="namecomment">{{ user.first_name|default:user.username }}</div>
+                                <input class="writecomment" name="body" type="text" placeholder="댓글을 남겨 주세요..."
+                                    required>
                             </div>
-                        </form>
 
-                        {% else %}
-                        <div class="comment-field">
-                            <strong>댓글을 남기려면 로그인이 필요해요</strong>
-                            <span>Sign in to leave a note on this page.</span>
-                        </div>
+                            <button type="submit" class="signin">post →
+                            </button>
+                    </form>
 
-                        <a href="{% url 'login' %}" class="button">
-                            <div class="signin">Sign in →</div>
-                        </a>
-                        {% endif %}
+                    {% else %}
+                    <div class="comment-field">
+                        <strong>댓글을 남기려면 로그인이 필요해요</strong>
+                        <span>Sign in to leave a note on this page.</span>
                     </div>
 
+                    <a href="{% url 'login' %}" class="button">
+                        <div class="signin">Sign in →</div>
+                    </a>
+                    {% endif %}
+            </div>
 
 
-                    <div class="comment-list">
-                        {% for comment in comments %}
-                        <div class="comment-item">
-                            <div class="comment-avatar">{{ comment.initials }}</div>
 
-                            <div class="comment-content">
-                                <div class="comment-head">
-                                    <strong>{{ comment.display_name }}</strong>
-                                    <span>{{ comment.date_display }}</span>
-                                </div>
+            <div class="comment-list">
+                {% for comment in comments %}
+                <div class="comment-item">
+                    <div class="comment-avatar">{{ comment.initials }}</div>
 
-                                <p>{{ comment.body }}</p>
-                            </div>
+                    <div class="comment-content">
+                        <div class="comment-head">
+                            <strong>{{ comment.display_name }}</strong>
+                            <span>{{ comment.date_display }}</span>
                         </div>
 
-                        {% if not forloop.last %}
-                        <div class="detail-line"></div>
-                        {% endif %}
-                        {% endfor %}
+                        <p>{{ comment.body }}</p>
                     </div>
-                </section>
-
-        </article>
-
-        <aside class="detail-meta-side">
-            <p class="side-title">META</p>
-
-            <div class="meta-list">
-                <div class="meta-row">
-                    <span>author</span>
-                    <strong>아기사자</strong>
                 </div>
 
-                <div class="meta-row">
-                    <span>edited</span>
-                    <strong>{{ post.edited_at|date:"Y.m.d" }}</strong>
-                </div>
+                {% if not forloop.last %}
+                <div class="detail-line"></div>
+                {% endif %}
+                {% endfor %}
+            </div>
+    </section>
 
-                <div class="meta-row">
-                    <span>views</span>
-                    <strong>{{ post.views }}</strong>
-                </div>
+    </article>
 
-                <div class="meta-row">
-                    <span>license</span>
-                    <strong>{{ post.license }}</strong>
-                </div>
+    <aside class="detail-meta-side">
+        <p class="side-title">META</p>
+
+        <div class="meta-list">
+            <div class="meta-row">
+                <span>author</span>
+                <strong>아기사자</strong>
             </div>
 
-            <div class="share-box">
-                <p>SHARE</p>
-
-                <div class="share-buttons">
-                    <button type="button">copy ⎘</button>
-                    <button type="button">x</button>
-                    <button type="button">rss</button>
-                </div>
+            <div class="meta-row">
+                <span>edited</span>
+                <strong>{{ post.edited_at|date:"Y.m.d" }}</strong>
             </div>
-        </aside>
+
+            <div class="meta-row">
+                <span>views</span>
+                <strong>{{ post.views }}</strong>
+            </div>
+
+            <div class="meta-row">
+                <span>license</span>
+                <strong>{{ post.license }}</strong>
+            </div>
+        </div>
+
+        <div class="share-box">
+            <p>SHARE</p>
+
+            <div class="share-buttons">
+                <button type="button">copy ⎘</button>
+                <button type="button">x</button>
+                <button type="button">rss</button>
+            </div>
+        </div>
+    </aside>
 
     </section>
 
